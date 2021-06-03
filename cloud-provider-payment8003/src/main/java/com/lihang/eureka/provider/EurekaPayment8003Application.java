@@ -1,6 +1,5 @@
 package com.lihang.eureka.provider;
 
-import com.sun.xml.internal.ws.message.source.PayloadSourceMessage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
