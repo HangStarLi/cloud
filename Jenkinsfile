@@ -5,4 +5,7 @@ checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], extensions: [], u
     stage("安装公共子工程"){
         sh "mvn -f cloud-api-commons clean install"
     }
+    stage("编译、打包"){
+        sh "mvn -f ${project_name} clean package"
+    }
 }
