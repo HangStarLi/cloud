@@ -15,7 +15,7 @@ checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], extensions: [], u
 	    sh"mvn -f ${project_name} dockerfile:build"
 		sh"docker tag ${imageName} ${harborUrl}/${harborProject}/${imageName}"
 		withCredentials([usernamePassword(credentialsId: '0d5d3174-1003-454a-b73c-1a41a2e3d14b', passwordVariable: 'myPwd', usernameVariable: 'myUser')]) {
-            sh"docker login -u myUser -p myPwd ${harborUrl}"
+            sh"docker login -u ${myUser} -p ${myPwd} ${harborUrl}"
 		    sh"docker push ${harborUrl}/${harborProject}/${imageName}"
 			echo "推送成功"
 }
