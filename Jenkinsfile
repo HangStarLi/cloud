@@ -12,7 +12,7 @@ checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], extensions: [], u
     }
 	stage("生成镜像、打标签、推镜像到harbor"){
 	    def imageName="${project_name}:latest"
-	    sh"dockerfile:build"
+	    sh"mvn -f ${project_name} dockerfile:build"
 		sh"docker tag ${iamgeName} ${harborUrl}/harborProject/${imageName}"
 		withCredentials([usernamePassword(credentialsId: '0d5d3174-1003-454a-b73c-1a41a2e3d14b', passwordVariable: 'myPwd', usernameVariable: 'myUser')]) {
             sh"docker login -u myUser -p myPwd ${harborUrl}"
